@@ -1,9 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AuthController } from './auth.controller';
 import { AUTH_PACKAGE_NAME, AUTH_SERVICE_NAME } from './auth.pb';
 import { AuthService } from './auth.service';
 
+/**
+ * Make this module global. 
+ * So that if there are other modules that will use this, there is no need to re-import
+ */
+@Global()
 @Module({
   imports: [
     ClientsModule.register([

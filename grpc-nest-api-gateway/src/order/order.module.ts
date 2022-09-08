@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { AuthModule } from 'src/auth/auth.module';
 import { OrderController } from './order.controller';
 import { ORDER_PACKAGE_NAME, ORDER_SERVICE_NAME } from './order.pb';
 
@@ -15,7 +16,7 @@ import { ORDER_PACKAGE_NAME, ORDER_SERVICE_NAME } from './order.pb';
           protoPath: 'node_modules/grpc-nest-proto/proto/order.proto',
         }
       }
-    ])
+    ]),
   ],
   controllers: [OrderController]
 })
