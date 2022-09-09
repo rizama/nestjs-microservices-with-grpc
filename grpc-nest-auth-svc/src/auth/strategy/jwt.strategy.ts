@@ -5,7 +5,7 @@ import { Auth } from '../auth.entity';
 import { JwtService } from '../service/jwt.service';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy, 'my-jwt') {
+export class JwtStrategy extends PassportStrategy(Strategy, "my-jwt-strategy") {
     @Inject(JwtService)
     private readonly jwtService: JwtService;
 

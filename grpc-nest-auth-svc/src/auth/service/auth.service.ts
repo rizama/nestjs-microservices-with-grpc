@@ -16,6 +16,8 @@ export class AuthService {
     private readonly jwtService: JwtService;
 
     public async register({ email, password }: RegisterRequestDto): Promise<RegisterResponse> {
+        console.log('Hit Auth Microservice - register');
+
         let auth: Auth = await this.repository.findOne({ where: { email } });
 
         if (auth) {
@@ -33,6 +35,8 @@ export class AuthService {
     }
 
     public async login({ email, password }: LoginRequestDto): Promise<LoginResponse> {
+        console.log('Hit Auth Microservice - login');
+
         const auth: Auth = await this.repository.findOne({ where: { email } });
 
         if (!auth) {
@@ -52,6 +56,7 @@ export class AuthService {
 
     public async validate({ token }: ValidateRequestDto): Promise<ValidateResponse> {
         const decoded: Auth = await this.jwtService.verify(token);
+        console.log(decoded, '*decoded');
 
         if (!decoded) {
             return { status: HttpStatus.FORBIDDEN, error: ['Token is invalid'], userId: null };
