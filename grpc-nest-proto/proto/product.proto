@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package product;
 
-// RPC Endpoint
 service ProductService {
     rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse) {}
     rpc FindOne (FindOneRequest) returns (FindOneResponse) {}
@@ -48,6 +47,7 @@ message FindOneResponse {
 
 message DecreaseStockRequest {
     int32 id = 1;
+    int32 orderId = 2;
 }
 
 message DecreaseStockResponse {
