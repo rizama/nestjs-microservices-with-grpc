@@ -37,6 +37,7 @@ export interface FindOneResponse {
 
 export interface DecreaseStockRequest {
   id: number;
+  orderId: number;
 }
 
 export interface DecreaseStockResponse {
@@ -46,8 +47,6 @@ export interface DecreaseStockResponse {
 
 export const PRODUCT_PACKAGE_NAME = "product";
 
-/** RPC Endpoint */
-
 export interface ProductServiceClient {
   createProduct(request: CreateProductRequest): Observable<CreateProductResponse>;
 
@@ -55,8 +54,6 @@ export interface ProductServiceClient {
 
   decreaseStock(request: DecreaseStockRequest): Observable<DecreaseStockResponse>;
 }
-
-/** RPC Endpoint */
 
 export interface ProductServiceController {
   createProduct(

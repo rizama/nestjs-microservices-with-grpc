@@ -15,6 +15,7 @@ export class ProductService {
     private readonly decreaseLogRepository: Repository<StockDecreaseLog>;
 
     public async findOne({ id }: FindOneRequestDto): Promise<FindOneResponse> {
+        console.log('Hit Product Microservice - Find One');
         const product: Product = await this.repository.findOne({ where: { id } });
 
         if (!product) {
@@ -25,6 +26,8 @@ export class ProductService {
     }
 
     public async createProduct(payload: CreateProductRequestDto): Promise<CreateProductResponse> {
+        console.log('Hit Product Microservice - Create Product');
+
         const product: Product = new Product();
 
         product.name = payload.name;
@@ -38,6 +41,7 @@ export class ProductService {
     }
 
     public async decreaseStock({ id, orderId }: DecreaseStockRequestDto): Promise<DecreaseStockResponse> {
+        console.log('Hit Product Microservice - Decrease Stock');
         const product: Product = await this.repository.findOne({ select: ['id', 'stock'], where: { id } });
 
         if (!product) {
