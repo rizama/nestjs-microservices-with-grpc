@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
         const bearer: string[] = authorization.split(' ');
 
         if (!bearer || bearer.length < 2) {
-        throw new UnauthorizedException();
+            throw new UnauthorizedException();
         }
 
         const token: string = bearer[1];
