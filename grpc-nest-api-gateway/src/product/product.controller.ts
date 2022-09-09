@@ -25,12 +25,15 @@ export class ProductController implements OnModuleInit {
     @Post()
     @UseGuards(AuthGuard)
     private async createProduct(@Body() body: CreateProductRequest): Promise<Observable<CreateProductResponse>> {
+        console.log(body, "* Hit Create Product API Gateway");
+
         return this.svc.createProduct(body);
     }
 
     @Get(':id')
     @UseGuards(AuthGuard)
     private async findOne(@Param('id', ParseIntPipe) id: number): Promise<Observable<FindOneResponse>> {
+        console.log( "Hit Detail Product API Gateway");
         return this.svc.findOne({ id });
     }
 }

@@ -19,6 +19,8 @@ export class OrderController implements OnModuleInit {
     @Post()
     @UseGuards(AuthGuard)
     private async createOrder(@Req() req: Request): Promise<Observable<CreateOrderResponse>> {
+        console.log(req.body, "* Hit Create Order API Gateway");
+
         const body: CreateOrderRequest = req.body;
 
         body.userId = <number>req['user'];

@@ -16,11 +16,15 @@ export class AuthController implements OnModuleInit {
 
     @Post('register')
     private async register(@Body() body: RegisterRequest): Promise<Observable<RegisterResponse>> {
+        console.log(body, "* Hit Register API Gateway");
+
         return this.svc.register(body);
     }
 
     @Put('login')
     private async login(@Body() body: LoginRequest): Promise<Observable<LoginResponse>> {
+        console.log(body, "* Hit Login API Gateway");
+
         return this.svc.login(body);
     }
 }
